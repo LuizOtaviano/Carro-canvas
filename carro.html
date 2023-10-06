@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carro</title>
+    <style>
+        canvas {border: solid 1px black}
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1200px" height="500px">
+
+    </canvas>
+
+    <script>
+        let ctx = canvas.getContext("2d")
+        carcaca()
+        roda(400, 400)
+        roda(800, 400)
+        farol()
+        escapamento()
+        porta()
+        vidroFrontal()
+        vidroTraseiro()
+        effects()
+        chao()
+
+        function chao() {
+            ctx.beginPath()
+            ctx.moveTo(0, 455)
+            ctx.lineTo(1200, 455)
+            ctx.stroke()
+        }
+
+        function effects() {
+            ctx.beginPath()
+            ctx.moveTo(1000, 355)
+            ctx.lineTo(1040, 330)
+            
+            ctx.moveTo(1000, 380)
+            ctx.lineTo(1040, 380)
+
+            ctx.moveTo(1000, 400)
+            ctx.lineTo(1040, 420)
+
+            // peneu da frente
+            ctx.moveTo(450, 440)
+            ctx.lineTo(500, 450)
+
+            ctx.moveTo(450, 430)
+            ctx.lineTo(500, 430)
+
+            // peneu traseiro
+            ctx.moveTo(850, 440)
+            ctx.lineTo(900, 450)
+
+            ctx.moveTo(850, 430)
+            ctx.lineTo(900, 420)
+
+            ctx.lineWidth = 5
+            ctx.stroke()
+        }
+
+        function farol() {
+            ctx.beginPath()
+            ctx.moveTo(170, 325)
+            ctx.lineTo(210, 300)
+            ctx.lineTo(170, 275)
+            ctx.fillStyle = "yellow"
+            ctx.fill()
+            ctx.stroke()
+        }
+
+        function escapamento() {
+            ctx.beginPath()
+            ctx.fillStyle = "black"
+            ctx.fillRect(895, 365, 80, 20)
+        }
+
+        function porta() {
+            // parte inferior porta
+            ctx.beginPath()
+            ctx.moveTo(600, 390)
+            ctx.lineTo(485, 390)
+            ctx.stroke()
+            // contorno do peneu
+            ctx.beginPath()
+            ctx.arc(405, 390, 80, (3*Math.PI)/2, 0);
+            ctx.stroke()
+            // parte frontal porta
+            ctx.beginPath()
+            ctx.moveTo(405, 311)
+            ctx.lineTo(405, 235)
+            // vidro da porta
+            ctx.lineTo(485, 165)
+            // parte de cima da porta
+            ctx.lineTo(600, 165)
+            // fechar porta
+            ctx.lineTo(600, 390)
+            ctx.stroke()
+        }
+
+        function vidroFrontal() {
+            ctx.beginPath()
+            ctx.moveTo(580, 180)
+            ctx.lineTo(490, 180)
+            ctx.lineTo(425, 235)
+            ctx.lineTo(580, 235)
+            ctx.closePath()
+            ctx.fillStyle = "#7092BE"
+            ctx.fill()
+            ctx.stroke()
+        }
+
+        function vidroTraseiro() {
+            ctx.beginPath()
+            ctx.moveTo(620, 180)
+            ctx.lineTo(750, 180)
+            ctx.lineTo(790, 235)
+            ctx.lineTo(620, 235)
+            ctx.closePath()
+            ctx.fillStyle = "#7092BE"
+            ctx.fill()
+            ctx.stroke()
+        }
+
+        function carcaca() {
+            ctx.beginPath()
+            // eixo
+            ctx.moveTo(475, 400)
+            ctx.lineTo(725, 400)
+            // parte embaixo frente
+            ctx.moveTo(325, 400)
+            ctx.lineTo(200, 400)
+            // parte inferior farol
+            ctx.lineTo(170, 325)
+            // frente farol
+            ctx.lineTo(170, 275)
+            // começo capo
+            ctx.lineTo(225, 250)
+            // capo
+            ctx.lineTo(360, 250)
+            //vidro frontal
+            ctx.lineTo(480, 150)
+            //teto
+            ctx.lineTo(800, 150)
+            //vidro traseiro
+            ctx.lineTo(950, 250)
+            //lataria traseira
+            ctx.lineTo(950, 350)
+            // lataria baixo traseira
+            ctx.lineTo(875, 400)
+            ctx.fillStyle = "#C3C3C3"
+            ctx.lineWidth = 3
+            ctx.fill()
+            ctx.stroke()
+        }
+
+        function roda(x, y) {
+            // Caixa da roda
+            ctx.beginPath()
+            ctx.arc(x, y, 75, Math.PI, 0);
+            ctx.fillStyle = "white"
+            ctx.fill()
+            ctx.stroke()
+
+            // Parte externa da roda
+            ctx.beginPath();
+            ctx.arc(x, y, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = "white"
+            ctx.fill()
+            ctx.stroke()
+            ctx.closePath();
+
+            // Parte interna da roda
+            ctx.beginPath()
+            ctx.arc(x, y, 25, 0, 2 * Math.PI);
+            ctx.fillStyle = "gray"
+            ctx.lineWidth = 3
+            ctx.fill()
+            ctx.stroke()
+            
+        }
+        
+    </script>
+</body>
+</html>
